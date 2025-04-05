@@ -177,19 +177,5 @@
     </div>
 
     <script src="scripts/auth.js"></script>
-    <script>
-        // Highlight current page in navbar
-        document.addEventListener('DOMContentLoaded', function() {
-            const currentPage = location.pathname.split('/').pop();
-            const navLinks = document.querySelectorAll('.nav-link');
-            
-            navLinks.forEach(link => {
-                if (link.getAttribute('href') === currentPage) {
-                    link.classList.add('active');
-                    link.setAttribute('aria-current', 'page');
-                }
-            });
-        });
-    </script>
-</body>
+    </body>
 </html>
