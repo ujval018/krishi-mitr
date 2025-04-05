@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Barter & Resell | Krishi-Mitr</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        header {
+            background: #007BFF;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        header h2 {
+            margin: 0;
+        }
+        form {
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        form input, form select, form button {
+            width: 100%;
+            margin-bottom: 1rem;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        form button {
+            background: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        form button:hover {
+            background: #0056b3;
+        }
+        h3 {
+            text-align: center;
+            margin-top: 2rem;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            max-width: 800px;
+            margin: 1rem auto;
+        }
+        ul li {
+            background: white;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        ul li span {
+            font-weight: bold;
+        }
+        ul li button {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        ul li button:hover {
+            background: #a71d2a;
+        }
+    </style>
+</head>
+<body class="farmer-theme barter-page">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success shadow-sm">
+        <div class="container">
+            <!-- Brand Logo -->
+            <a class="navbar-brand" href="index.html">
+                <img src="assets/logo.jpg" alt="Krishi-Mitr" height="40" class="d-inline-block align-top me-2">
+                <span class="d-none d-md-inline">Krishi-Mitr</span>
+            </a>
+            
+            <!-- Toggler for Mobile View -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <!-- Navbar Links -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="marketplace.html">Marketplace</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pricing.html">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="barter.html">Barter</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+                
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">
+                            <i class="fas fa-sign-in-alt"></i> Login
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="register.html">
+                            <i class="fas fa-user-plus"></i> Register
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="hero-image" style="background-image: url('assets/farm-hero.jpg')">
+        <div class="hero-content">
+            <h1>Crop Barter & Resell</h1>
+            <p>Exchange crops and agricultural products</p>
+        </div>
+    </div>
+
+    <!-- Form to add a crop -->
+    <form id="addCropForm">
+        <input type="text" id="owner" placeholder="Your Name" required>
+        <input type="text" id="cropName" placeholder="Crop Name" required>
+        <select id="cropType" required>
+            <option value="" disabled selected>Select Type</option>
+            <option value="barter">Barter</option>
+            <option value="resell">Resell</option>
+        </select>
+        <input type="number" id="price" placeholder="Price (for resell)">
+        <input type="text" id="exchangeFor" placeholder="Exchange For (for barter)">
+        <button type="submit">Add Crop</button>
+    </form>
+
+    <h3>Available Crops</h3>
+    <ul id="cropList"></ul>
+
+    <script>
+        const form = document.getElementById('addCropForm');
+        const cropList = document.getElementById('cropList');
+
+        // Load crops from backend
+        async function loadCrops() {
+            try {
+                const response = await fetch('http://localhost:5000/api/crop/list');
+                const crops = await response.json();
+                renderCrops(crops);
+            } catch (error) {
+                console.error('Error loading crops:', error);
+                cropList.innerHTML = '<li>Error loading crops. Please try again later.</li>';
+            }
+        }
+
+        // Handle form submission
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const username = localStorage.getItem('currentUser');
+            if (!username) {
+                alert('Please login to add crops');
+                window.location.href = 'login.html';
+                return;
+            }
+
+            const crop = {
+                owner: username,
+                name: document.getElementById('cropName').value,
+                type: document.getElementById('cropType').value,
+                price: document.getElementById('price').value,
+                exchange_for: document.getElementById('exchangeFor').value
+            };
+
+            try {
+                const response = await fetch('http://localhost:5000/api/crop/add', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(crop)
+                });
+
+                if (response.ok) {
+                    loadCrops();
+                    form.reset();
+                } else {
+                    const error = await response.json();
+                    alert(error.message || 'Failed to add crop');
+                }
+            } catch (error) {
+                console.error('Error adding crop:', error);
+                alert('Failed to add crop. Please try again.');
+            }
+        });
+
+        // Render crops in the list
+        function renderCrops(crops) {
+            cropList.innerHTML = '';
+            crops.forEach((crop) => {
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    <div>
+                        <span>${crop.name}</span> (${crop.type})<br>
+                        Owner: ${crop.owner}<br>
+                        ${crop.type === 'resell' ? `Price: ₹${crop.price}<br>` : ''}
+                        ${crop.type === 'barter' ? `Exchange For: ${crop.exchange_for}<br>` : ''}
+                    </div>
+                    ${crop.owner === localStorage.getItem('currentUser') ? 
+                        `<button onclick="deleteCrop('${crop._id}')">Remove</button>` : ''}
+                `;
+                cropList.appendChild(li);
+            });
+        }
+
+        // Delete crop
+        async function deleteCrop(cropId) {
+            try {
+                const response = await fetch(`http://localhost:5000/api/crop/${cropId}`, {
+                    method: 'DELETE'
+                });
+
+                if (response.ok) {
+                    loadCrops();
+                } else {
+                    const error = await response.json();
+                    alert(error.message || 'Failed to delete crop');
+                }
+            } catch (error) {
+                console.error('Error deleting crop:', error);
+                alert('Failed to delete crop. Please try again.');
+            }
+        }
+
+        // Load crops when page loads
+        document.addEventListener('DOMContentLoaded', loadCrops);
+    </script>
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Market Price</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    header {
+      background-color: #198754;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 40px;
+    }
+    .section-title {
+      margin-top: 40px;
+      margin-bottom: 20px;
+      text-align: center;
+      font-weight: 600;
+      font-size: 1.5rem;
+      color: #198754;
+    }
+    .table img {
+      width: 100px;
+      height: auto;
+      border-radius: 10px;
+    }
+    .search-box {
+      max-width: 400px;
+      margin: 0 auto 30px;
+    }
+  </style>
+</head>
+<body class="farmer-theme pricing-page">
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-success shadow-sm">
+  <div class="container">
+    <!-- Brand Logo -->
+    <a class="navbar-brand" href="index.html">
+      <img src="assets/logo.jpg" alt="Krishi-Mitr" height="40" class="d-inline-block align-top me-2">
+      <span class="d-none d-md-inline">Krishi-Mitr</span>
+    </a>
+    
+    <!-- Toggler for Mobile View -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <!-- Navbar Links -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="marketplace.html">Marketplace</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="pricing.html">Pricing</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="barter.html">Barter</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="dashboard.html">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="about.html">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="contact.html">Contact</a>
+        </li>
+      </ul>
+      
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="login.html">
+            <i class="fas fa-sign-in-alt"></i> Login
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="register.html">
+            <i class="fas fa-user-plus"></i> Register
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<header>Market Price</header>
+
+<div class="container mb-5">
+  <!-- Search Input -->
+  <div class="search-box text-center">
+    <input type="text" id="searchInput" class="form-control" placeholder="Search by crop name...">
+  </div>
+
+  <!-- Cereals Section -->
+  <div>
+    <div class="section-title">Cereals</div>
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover align-middle crop-table">
+        <thead class="table-success text-center">
+          <tr>
+            <th>Crop Name</th>
+            <th>Image</th>
+            <th>MSP (₹/quintal)</th>
+          </tr>
+        </thead>
+        <tbody class="text-center">
+          <tr><td>Wheat</td><td><img src="https://imgs.search.brave.com/h0ZO8KKPr6GUWIhLeIyVVcwqp3fh-DXlRWY0HepKf_o/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTgy/MTc1NDQxL3Bob3Rv/L3doZWF0LmpwZz9z/PTYxMng2MTImdz0w/Jms9MjAmYz1oVldv/V3ZhYWtMNlgyWHZ2/RlBqMTJJektIcHlV/MWktaHFkZk45bTZ6/ZDhjPQ" alt="Wheat"></td><td>2,275</td></tr>
+          <tr><td>Barley</td><td><img src="https://imgs.search.brave.com/juTeMJ5cegjHXGkukSB78ZeWCYigCS8QdlZAOV1YwOs/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvNDc4/NDkzMjQ4L3Bob3Rv/L2JhcmxleS1vbi13/b29kZW4tdGFibGUu/anBnP3M9NjEyeDYx/MiZ3PTAmaz0yMCZj/PUplRXJKX2Vac0U1/SHJMX2RZNXVTSE9V/R05ZYVBoVW5rU1Fj/RUs1ZlpzRjA9" alt="Barley"></td><td>1,850</td></tr>
+          <tr><td>Maize</td><td><img src="https://imgs.search.brave.com/0y6_S-Lg0v_BbKx6mYB-B4cSi3x7bmQbEJpojKWcmME/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTc1/MjMzMzc3L3Bob3Rv/L21haXplLXNlZWRz/LXdpdGgtc2Fjay5q/cGc_cz02MTJ4NjEy/Jnc9MCZrPTIwJmM9/NExSVmpKWmhvRV9a/Y2dzbzRCbUxtTjFO/dzk1cmNIVkJaODlZ/R0tiT204bz0" alt="Maize"></td><td>2,225</td></tr>
+          <tr><td>Paddy (Common)</td><td><img src="https://imgs.search.brave.com/dtlSTeMx1UuD-P68hExM9pDyNSdRrrevG8Q3thw3UC0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTcz/MTkzMDg3L3Bob3Rv/L21haXplLWluLWJ1/cmxhcC1zYWNrLmpw/Zz9zPTYxMng2MTIm/dz0wJms9MjAmYz0w/YkZkQWpBZDk1M2M4/MGlrNlJlX0hRWllK/YVdKUWJYVzdOOHlo/WVlpWTdVPQ" alt="Paddy"></td><td>2,300</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Pulses Section -->
+  <div>
+    <div class="section-title">Pulses</div>
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover align-middle crop-table">
+        <thead class="table-warning text-center">
+          <tr>
+            <th>Crop Name</th>
+            <th>Image</th>
+            <th>MSP (₹/quintal)</th>
+          </tr>
+        </thead>
+        <tbody class="text-center">
+          <tr><td>Gram (Chickpea)</td><td><img src="https://imgs.search.brave.com/f6rrPuCuS5xp9hRHGxzymexDzMpVAyw9GTZkhESiJ3M/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTIy/NzIxNTg2OC9waG90/by9jaGlja3BlYXMu/anBnP3M9NjEyeDYx/MiZ3PTAmaz0yMCZj/PWRXOHRmeEgxTWdE/MFJSdllnenp0X3dQ/bGZ4cGVMdFVRTEYy/UFg0LVlmcDQ9" alt="Gram"></td><td>5,440</td></tr>
+          <tr><td>Lentil (Masur)</td><td><img src="https://imgs.search.brave.com/5tyeasgJu06Dbiy9zadFqmgTq4j-9js5_OJBvVuMx88/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvNjg5/OTk3MzIyL3Bob3Rv/L2dyZWVuLWxlbnRp/bHMuanBnP3M9NjEy/eDYxMiZ3PTAmaz0y/MCZjPVpBVlZ0SEVK/MlRoR0kxa1hXV0lH/MW1oNG1NdmlGb2NZ/WHNoX1VqTG5QeUk9" alt="Lentil"></td><td>6,425</td></tr>
+          <tr><td>Tur (Arhar)</td><td><img src="https://imgs.search.brave.com/CgkmP4ZsUsFDaRXpvsSCwNdlxmZTq-EoEco3YHFrnd0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzAwLzM2LzQ2LzE5/LzM2MF9GXzM2NDYx/OTg1X1ZIRFA3d3J6/TjhaZVZXMXJyTWNw/UmNQWTRLOHFFVXpa/LmpwZw" alt="Tur"></td><td>7,550</td></tr>
+          <tr><td>Moong</td><td><img src="https://imgs.search.brave.com/vlOj3CWiQH9EZzhTlALMVsP_-Aca_8aBSRhVKH0aulc/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzAwLzgwLzA4Lzk1/LzM2MF9GXzgwMDg5/NTAzX2RoU2IyRFlZ/bmVkU1ZDaEVvaEJj/UmtMWm40QkxwcmFK/LmpwZw" alt="Moong"></td><td>8,682</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Vegetables & Fruits Section -->
+  <div>
+    <div class="section-title">Vegetables & Fruits</div>
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover align-middle crop-table">
+        <thead class="table-danger text-center">
+          <tr>
+            <th>Item Name</th>
+            <th>Image</th>
+            <th>Market Price (₹/quintal)</th>
+          </tr>
+        </thead>
+        <tbody class="text-center">
+          <tr><td>Tomato</td><td><img src="https://upload.wikimedia.org/wikipedia/commons/8/88/Bright_red_tomato_and_cross_section02.jpg" alt="Tomato"></td><td>2,000 (avg.)</td></tr>
+          <tr><td>Potato</td><td><img src="https://imgs.search.brave.com/j_4-j_7Ko9_lGJajOh9vbSNaQmjEkbPrqAEIxrdgCeY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTE2/MDA4NzUwL3Bob3Rv/L3BvdGF0b2VzLmpw/Zz9zPTYxMng2MTIm/dz0wJms9MjAmYz16/bW00M25tNkdjb0ZH/cDUteHlXQkRUcnQ1/SWs2eGx0enNQOGVG/WWxCOW1rPQ" alt="Potato"></td><td>1,200 (avg.)</td></tr>
+          <tr><td>Onion</td><td><img src="https://imgs.search.brave.com/4s4-KM8u_WU8dPLQbJgOIc5kYft-klURTczzoSo7kO0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvNTM2/ODkxNjA1L3Bob3Rv/L29uaW9uLWJhY2tn/cm91bmQuanBnP3M9/NjEyeDYxMiZ3PTAm/az0yMCZjPXM1SWQy/U2haZkZCT01PU09I/bmk5X0QwQ2RRMzVS/MllXNzI1aGdSX1VJ/QlE9" alt="Onion"></td><td>1,500 (avg.)</td></tr>
+          <tr><td>Cauliflower</td><td><img src="https://imgs.search.brave.com/751g8YVh4K4KZzKGvF3RAXmK91f9x_lcYP9y1lQVGao/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvNjQx/MTQ3NTQ4L3Bob3Rv/L2ZyZXNoLWNhdWxp/Zmxvd2VyLmpwZz9z/PTYxMng2MTImdz0w/Jms9MjAmYz1NcmpP/NG91U1VYWVFPWGJM/QzB2MUdJU2d5VldL/c0Jwb3YzVGJLZGcz/VUZrPQ" alt="Cauliflower"></td><td>2,200 (avg.)</td></tr>
+          <tr><td>Banana</td><td><img src="https://upload.wikimedia.org/wikipedia/commons/8/8a/Banana-Single.jpg" alt="Banana"></td><td>3,000 (avg.)</td></tr>
+          <tr><td>Apple</td><td><img src="https://upload.wikimedia.org/wikipedia/commons/1/15/Red_Apple.jpg" alt="Apple"></td><td>7,000 (avg.)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Note -->
+  <div class="mt-4 text-muted small text-center">
+    <p><strong>Note:</strong> MSP (Minimum Support Prices) are officially declared only for cereals and pulses. Prices for vegetables and fruits are market estimates and may vary by location and season.</p>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Search Script -->
+<script>
+  document.getElementById("searchInput").addEventListener("keyup", function () {
+    const query = this.value.toLowerCase();
+    const tables = document.querySelectorAll(".crop-table tbody");
+
+    tables.forEach(tbody => {
+      Array.from(tbody.rows).forEach(row => {
+        const cropName = row.cells[0].textContent.toLowerCase();
+        row.style.display = cropName.includes(query) ? "" : "none";
+      });
+    });
+  });
+</script>
+
+</body>
+</html>

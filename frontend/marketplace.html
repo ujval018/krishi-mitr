@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:,">
+    <title>Marketplace | Krishi-Mitr</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .marketplace-hero {
+            background-image: url('assets/farm-hero.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            position: relative;
+            margin-bottom: 2rem;
+        }
+        .marketplace-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.4);
+        }
+        .marketplace-hero-content {
+            position: relative;
+            z-index: 1;
+            padding: 1rem;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 0 2rem;
+        }
+        .product-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body class="farmer-theme marketplace-page">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success shadow-sm">
+        <div class="container">
+            <!-- Brand Logo -->
+            <a class="navbar-brand" href="index.html">
+                <img src="assets/logo.jpg" alt="Krishi-Mitr" height="40" class="d-inline-block align-top me-2">
+                <span class="d-none d-md-inline">Krishi-Mitr</span>
+            </a>
+            
+            <!-- Toggler for Mobile View -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <!-- Navbar Links -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="marketplace.html">Marketplace</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pricing.html">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="barter.html">Barter</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+                
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">
+                            <i class="fas fa-sign-in-alt"></i> Login
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="register.html">
+                            <i class="fas fa-user-plus"></i> Register
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container-fluid px-0">
+        <div class="marketplace-hero">
+        <div class="marketplace-hero-content">
+            <h2>Farm Fresh Marketplace</h2>
+            <p>Buy and sell agricultural products directly</p>
+        </div>
+    </div>
+
+    <div class="product-grid">
+        <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1593720219276-0b1eacd0aef4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Organic Rice">
+            <h3>Organic Rice</h3>
+            <p>₹1,850 per quintal</p>
+            <button class="btn-login">Buy Now</button>
+        </div>
+
+        <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Premium Wheat">
+            <h3>Premium Wheat</h3>
+            <p>₹2,015 per quintal</p>
+            <button class="btn-login">Buy Now</button>
+        </div>
+
+        <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1518977676601-b53f82aba655?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Fresh Vegetables">
+            <h3>Fresh Vegetables</h3>
+            <p>₹1,200 per quintal</p>
+            <button class="btn-login">Buy Now</button>
+        </div>
+    </div>
+
+    <script src="scripts/auth.js"></script>
+    <script>
+        // Highlight current page in navbar
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = location.pathname.split('/').pop();
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPage) {
+                    link.classList.add('active');
+                    link.setAttribute('aria-current', 'page');
+                }
+            });
+        });
+
+        // Fetch and display products
+        async function loadProducts() {
+            const productGrid = document.querySelector('.product-grid');
+            if (!productGrid) return;
+
+            try {
+                const response = await fetch('http://localhost:5000/api/crop/list');
+                const products = await response.json();
+
+                productGrid.innerHTML = products.map(product => `
+                    <div class="product-card">
+                        <img src="${product.image || 'https://via.placeholder.com/300'}" alt="${product.name}">
+                        <h3>${product.name}</h3>
+                        <p>${product.description || ''}</p>
+                        ${product.type === 'resell' ? `<p>Price: ₹${product.price}</p>` : ''}
+                        ${product.type === 'barter' ? `<p>Exchange for: ${product.exchange_for}</p>` : ''}
+                        <p>Seller: ${product.owner}</p>
+                        <button class="btn-login" onclick="handleProductAction('${product._id}')">
+                            ${product.type === 'resell' ? 'Buy Now' : 'Request Barter'}
+                        </button>
+                    </div>
+                `).join('');
+            } catch (error) {
+                console.error('Error loading products:', error);
+                productGrid.innerHTML = '<p>Error loading products. Please try again later.</p>';
+            }
+        }
+
+        // Handle product actions (buy/barter)
+        async function handleProductAction(productId) {
+            const username = localStorage.getItem('currentUser');
+            if (!username) {
+                window.location.href = 'login.html';
+                return;
+            }
+
+            try {
+                const response = await fetch(`http://localhost:5000/api/crop/${productId}/request`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ username })
+                });
+
+                const result = await response.json();
+                if (response.ok) {
+                    alert('Request submitted successfully!');
+                } else {
+                    alert(result.message || 'Request failed');
+                }
+            } catch (error) {
+                console.error('Error handling product action:', error);
+                alert('An error occurred. Please try again.');
+            }
+        }
+
+        // Load products when page loads
+        document.addEventListener('DOMContentLoaded', loadProducts);
+    </script>
+</body>
+</html>

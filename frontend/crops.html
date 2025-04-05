@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crops Marketplace</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="navbar"></div>
+
+    <h2>Available Crops</h2>
+    <div id="cropList" class="crop-container"></div>
+
+    <script>
+        // Load Navbar
+        fetch("navbar.html")
+            .then(response => response.text())
+            .then(data => document.getElementById("navbar").innerHTML = data);
+
+        // Fetch and Display Crops
+        function fetchCrops() {
+            fetch("http://localhost:5000/api/crop/list")
+                .then(response => response.json())
+                .then(crops => {
+                    const cropList = document.getElementById("cropList");
+                    cropList.innerHTML = ""; // Clear previous entries
+
+                    crops.forEach(crop => {
+                        const div = document.createElement("div");
+                        div.className = "crop-card";
+                        div.innerHTML = `
+                            <h3>${crop.name} (${crop.type})</h3>
+                            <p>Owner: ${crop.owner}</p>
+                            ${crop.type === "resell" ? `<p>Price: ₹${crop.price}</p>` : ""}
+                            ${crop.type === "barter" ? `<p>Exchange for: ${crop.exchange_for}</p>` : ""}
+                            ${crop.type === "resell"
+                                ? `<button onclick="buyCrop('${crop.id}')">Buy</button>`
+                                : `<button onclick="barterCrop('${crop.id}')">Barter</button>`
+                            }
+                        `;
+                        cropList.appendChild(div);
+                    });
+                })
+                .catch(error => console.error("Error fetching crops:", error));
+        }
+
+        // Barter a Crop
+        function barterCrop(cropId) {
+            fetch(`http://localhost:5000/api/crop/barter/${cropId}`, { method: "POST" })
+                .then(response => response.json())
+                .then(data => {
+                    alert(data.message);
+                    fetchCrops(); // Refresh the list
+                })
+                .catch(error => console.error("Error bartering crop:", error));
+        }
+
+        // Buy a Crop
+        function buyCrop(cropId) {
+            fetch(`http://localhost:5000/api/crop/buy/${cropId}`, { method: "POST" })
+                .then(response => response.json())
+                .then(data => {
+                    alert(data.message);
+                    fetchCrops(); // Refresh the list
+                })
+                .catch(error => console.error("Error buying crop:", error));
+        }
+
+        fetchCrops(); // Load crops on page load
+    </script>
+</body>
+</html>

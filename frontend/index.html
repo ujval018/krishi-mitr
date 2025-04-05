@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krishi-Mitr | Home</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body class="index-page">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success shadow-sm">
+        <div class="container">
+            <!-- Brand Logo -->
+            <a class="navbar-brand" href="index.html">
+                <img src="assets/logo.jpg" alt="Krishi-Mitr" height="40" class="d-inline-block align-top me-2">
+                <span class="d-none d-md-inline">Krishi-Mitr</span>
+            </a>
+            
+            <!-- Toggler for Mobile View -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <!-- Navbar Links -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="marketplace.html">Marketplace</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pricing.html">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="barter.html">Barter</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+                
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">
+                            <i class="fas fa-sign-in-alt"></i> Login
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="register.html">
+                            <i class="fas fa-user-plus"></i> Register
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-image position-relative overflow-hidden">
+        <div class="hero-overlay"></div>
+        <div class="hero-content text-center position-relative">
+            <h1 class="display-3 fw-bold mb-4 animate__animated animate__fadeInDown">Welcome to Krishi-Mitr</h1>
+            <p class="lead mb-5 animate__animated animate__fadeIn animate__delay-1s">Your trusted platform for crop bartering, selling, and community building</p>
+            <div class="cta-buttons animate__animated animate__fadeInUp animate__delay-2s">
+                <a href="register.html" class="btn btn-primary btn-lg me-3">Get Started</a>
+                <a href="about.html" class="btn btn-outline-light btn-lg">Learn More</a>
+            </div>
+        </div>
+    </header>
+
+    <style>
+        .hero-image {
+            height: 80vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                      url('assets/farm-hero.jpg') center/cover no-repeat;
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+        }
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding-top: 15vh;
+            color: white;
+        }
+        .cta-buttons .btn {
+            min-width: 150px;
+            padding: 0.8rem 1.5rem;
+            font-weight: 500;
+        }
+    </style>
+
+    <!-- Price Bulletin Section -->
+    <section class="container-fluid bg-light py-4 shadow-sm">
+        <div class="container">
+            <h2 class="text-center mb-4">Current Market Prices</h2>
+            <div class="price-ticker">
+                <div class="ticker-content" id="priceTicker">
+                    <!-- Prices will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="container my-5 py-5">
+        <div class="text-center mb-5">
+            <h2 class="display-5 fw-bold mb-3">Our Core Features</h2>
+            <p class="lead text-muted">Empowering farmers with innovative solutions</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-3">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-tractor fa-3x mb-3 text-primary"></i>
+                        <h3>Barter Crops</h3>
+                        <p>Exchange your crops with other farmers to meet your needs.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-store fa-3x mb-3 text-primary"></i>
+                        <h3>Sell Directly</h3>
+                        <p>Sell your produce directly to buyers without middlemen.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-users fa-3x mb-3 text-primary"></i>
+                        <h3>Community Building</h3>
+                        <p>Connect with fellow farmers and share knowledge and resources.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-chart-line fa-3x mb-3 text-primary"></i>
+                        <h3>Market Insights</h3>
+                        <p>Stay updated with the latest market prices and trends.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        .price-ticker {
+            overflow: hidden;
+            white-space: nowrap;
+            box-sizing: border-box;
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+        .ticker-content {
+            display: inline-block;
+            padding-left: 100%;
+            animation: ticker 30s linear infinite;
+        }
+        .ticker-item {
+            display: inline-block;
+            padding: 0 2rem;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #333;
+        }
+        @keyframes ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+        }
+    </style>
+
+    <script>
+        async function loadPrices() {
+            try {
+                const response = await fetch('http://localhost:5000/api/crop/prices');
+                const prices = await response.json();
+                
+                const ticker = document.getElementById('priceTicker');
+                ticker.innerHTML = prices.map(price => `
+                    <span class="ticker-item">
+                        ${price.crop}: ₹${price.price}/quintal (${price.change >= 0 ? '↑' : '↓'} ${Math.abs(price.change)}%)
+                    </span>
+                `).join('');
+            } catch (error) {
+                console.error('Error loading prices:', error);
+                document.getElementById('priceTicker').innerHTML = 
+                    '<span class="ticker-item">Market data currently unavailable</span>';
+            }
+        }
+
+        // Load prices when page loads
+        document.addEventListener('DOMContentLoaded', loadPrices);
+    </script>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Tutorials</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="#">Terms</a></li>
+                    <li><a href="#">Privacy</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Connect</h3>
+                <ul>
+                    <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                    <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Krishi-Mitr. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Highlight current page in navbar
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = location.pathname.split('/').pop();
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPage) {
+                    link.classList.add('active');
+                    link.setAttribute('aria-current', 'page');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

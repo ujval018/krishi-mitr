@@ -1,0 +1,20 @@
+@echo off
+echo 🚀 Starting Krishi Mitr Environment Setup...
+
+:: Step 1: Create Python Virtual Environment
+echo 📦 Creating Python virtual environment...
+python -m venv backend\venv
+
+:: Step 2: Activate & Install Python Dependencies
+echo 🐍 Installing Python dependencies...
+call backend\venv\Scripts\activate
+pip install -r backend\requirements.txt
+
+:: Step 3: Install Node.js Dependencies
+echo 📦 Installing Node.js dependencies...
+cd krishi-mitr
+npm install
+cd ..
+
+echo ✅ Setup Complete!
+echo 👉 To activate environment later, run: backend\venv\Scripts\activate

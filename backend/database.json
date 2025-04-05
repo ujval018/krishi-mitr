@@ -1,0 +1,58 @@
+{
+    "users": [
+        {
+            "username": "farmer1",
+            "password": "12345"
+        },
+        {
+            "username": "farmer11",
+            "password": "password123"
+        },
+        {
+            "username": "titun",
+            "password": "titunki"
+        }
+    ],
+    "crops": [
+        {
+            "id": 1,
+            "name": "Wheat",
+            "type": "Barter",
+            "owner": "farmer1",
+            "barterFor": "Rice",
+            "price": null
+        },
+        {
+            "id": 2,
+            "name": "Corn",
+            "type": "Resell",
+            "owner": "farmer1",
+            "barterFor": null,
+            "price": 200
+        },
+        {
+            "id": 3,
+            "owner": "farmer1",
+            "name": "Wheat",
+            "type": "barter",
+            "price": null,
+            "exchange_for": "Rice"
+        },
+        {
+            "id": "655ad379-d33a-4ace-8095-4eb0ddfeffdf",
+            "owner": "farmer1",
+            "name": "Wheat",
+            "type": "barter",
+            "price": 0,
+            "exchange_for": null
+        },
+        {
+            "id": "5bc16432-634f-4e8c-a053-6eda8250681e",
+            "owner": "farmer1",
+            "name": "Wheat",
+            "type": "barter",
+            "price": 0,
+            "exchange_for": null
+        }
+    ]
+}

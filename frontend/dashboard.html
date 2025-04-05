@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:,">
+    <title>Dashboard | Krishi-Mitr</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .dashboard-hero {
+            background-image: url('assets/farm-hero.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            position: relative;
+            margin-bottom: 2rem;
+        }
+        .dashboard-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.4);
+        }
+        .dashboard-hero-content {
+            position: relative;
+            z-index: 1;
+            padding: 1rem;
+        }
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 0 2rem;
+        }
+        .dashboard-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .crop-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body class="farmer-theme dashboard-page">
+    <!-- Shared Navigation -->
+    <div id="navbar-container"></div>
+
+    <div class="dashboard-hero">
+        <div class="dashboard-hero-content">
+            <h2>Welcome Back, Farmer!</h2>
+            <p>Check your latest farming insights and marketplace updates</p>
+        </div>
+    </div>
+
+    <div class="dashboard-grid">
+        <div class="dashboard-card">
+            <h3><i class="fas fa-tractor"></i> My Farm</h3>
+            <p>Current crops: 5</p>
+            <p>Harvest ready: 2 weeks</p>
+            <button class="btn-login">View Details</button>
+        </div>
+
+        <div class="dashboard-card">
+            <h3><i class="fas fa-chart-bar"></i> Market Prices</h3>
+            <p>Rice: ₹1,850/quintal</p>
+            <p>Wheat: ₹2,015/quintal</p>
+            <p>Potato: ₹1,200/quintal</p>
+            <button class="btn-login" onclick="window.location.href='pricing.html'">View All</button>
+        </div>
+
+        <div class="dashboard-card">
+            <h3><i class="fas fa-bullhorn"></i> Announcements</h3>
+            <p>New farming subsidy announced</p>
+            <p>Weather alert: Rain expected</p>
+            <button class="btn-login">See More</button>
+        </div>
+    </div>
+
+    <div class="dashboard-grid" style="margin-top: 2rem;">
+        <div class="dashboard-card crop-card">
+            <h3>Featured Crops</h3>
+            <img src="https://images.unsplash.com/photo-1593720219276-0b1eacd0aef4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Rice Farming">
+            <h4>Organic Rice</h4>
+            <p>High demand in current market</p>
+            <button class="btn-login">View Details</button>
+        </div>
+
+        <div class="dashboard-card crop-card">
+            <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Wheat Farming">
+            <h4>Premium Wheat</h4>
+            <p>Best quality seeds available</p>
+            <button class="btn-login">View Details</button>
+        </div>
+
+        <div class="dashboard-card crop-card">
+            <img src="https://images.unsplash.com/photo-1518977676601-b53f82aba655?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Vegetable Farming">
+            <h4>Fresh Vegetables</h4>
+            <p>Direct from farm to market</p>
+            <button class="btn-login">View Details</button>
+        </div>
+    </div>
+
+    <script src="scripts/auth.js"></script>
+    <script>
+        // Load shared navbar
+        fetch('navbar.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('navbar-container').innerHTML = html;
+            });
+
+        // Fetch user data and crops
+        async function loadDashboard() {
+            const username = localStorage.getItem('currentUser');
+            if (!username) {
+                window.location.href = 'login.html';
+                return;
+            }
+
+            try {
+                // Fetch user's crops
+                const cropsResponse = await fetch('http://localhost:5000/api/crop/list');
+                const crops = await cropsResponse.json();
+                
+                // Update My Farm section
+                const myFarmSection = document.querySelector('.dashboard-card:first-child');
+                if (myFarmSection) {
+                    const myCrops = crops.filter(crop => crop.owner === username);
+                    myFarmSection.innerHTML = `
+                        <h3><i class="fas fa-tractor"></i> My Farm</h3>
+                        <p>Current crops: ${myCrops.length}</p>
+                        ${myCrops.length > 0 ? 
+                            `<ul>${myCrops.slice(0, 3).map(crop => `<li>${crop.name}</li>`).join('')}</ul>` : 
+                            '<p>No crops added yet</p>'}
+                        <button class="btn-login" onclick="window.location.href='barter.html'">Manage Crops</button>
+                    `;
+                }
+
+                // Update Featured Crops section
+                const featuredSection = document.querySelector('.dashboard-grid:last-child');
+                if (featuredSection) {
+                    featuredSection.innerHTML = `
+                        ${crops.slice(0, 3).map(crop => `
+                            <div class="dashboard-card crop-card">
+                                <h3>${crop.name}</h3>
+                                <p>Owner: ${crop.owner}</p>
+                                <p>Type: ${crop.type}</p>
+                                ${crop.type === 'resell' ? `<p>Price: ₹${crop.price}</p>` : ''}
+                                ${crop.type === 'barter' ? `<p>Exchange for: ${crop.exchange_for}</p>` : ''}
+                                <button class="btn-login" onclick="window.location.href='marketplace.html'">View Details</button>
+                            </div>
+                        `).join('')}
+                    `;
+                }
+            } catch (error) {
+                console.error('Error loading dashboard:', error);
+            }
+        }
+
+        // Load dashboard when page loads
+        document.addEventListener('DOMContentLoaded', loadDashboard);
+    </script>
+</body>
+</html>

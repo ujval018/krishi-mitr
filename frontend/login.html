@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:,">
+    <title>Login | Krishi-Mitr</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="farmer-theme login-page">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success shadow-sm">
+        <div class="container">
+            <!-- Brand Logo -->
+            <a class="navbar-brand" href="index.html">
+                <img src="assets/logo.jpg" alt="Krishi-Mitr" height="40" class="d-inline-block align-top me-2">
+                <span class="d-none d-md-inline">Krishi-Mitr</span>
+            </a>
+            
+            <!-- Toggler for Mobile View -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <!-- Navbar Links -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="marketplace.html">Marketplace</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pricing.html">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="barter.html">Barter</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+                
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">
+                            <i class="fas fa-sign-in-alt"></i> Login
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="register.html">
+                            <i class="fas fa-user-plus"></i> Register
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container my-5">
+        <div class="login-container">
+        <div class="login-header">
+            <img src="assets/logo.jpg
+            " alt="Krishi-Mitr Logo" class="logo">
+            <h1>Welcome Back to Krishi-Mitr</h1>
+            <p>Connect with farmers and agricultural enthusiasts</p>
+            <div class="login-hero-image" style="
+                background-image: url('assets/farm-hero.avif');
+                height: 150px;
+                background-size: cover;
+                background-position: center;
+                margin-top: 20px;
+                border-radius: 8px;
+                position: relative;
+            ">
+                <div style="
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background: rgba(0,0,0,0.3);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: white;
+                    border-radius: 8px;
+                ">
+                    <h3 style="text-shadow: 1px 1px 3px rgba(0,0,0,0.8);">Growing Together</h3>
+                </div>
+            </div>
+        </div>
+
+        <form id="loginForm" class="login-form">
+            <div class="form-group">
+                <label for="username"><i class="fas fa-user"></i> Username</label>
+                <input type="text" id="username" placeholder="Enter your username" autocomplete="username" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="password"><i class="fas fa-lock"></i> Password</label>
+                <div class="password-input-container">
+                    <input type="password" id="password" placeholder="Enter your password" autocomplete="current-password" required>
+                    <i class="fas fa-eye toggle-password" onclick="togglePasswordVisibility()"></i>
+                </div>
+                <a href="forgot-password.html" class="forgot-password">Forgot password?</a>
+            </div>
+
+            <button type="submit" class="btn-login" id="loginButton">
+                <span id="loginText"><i class="fas fa-sign-in-alt"></i> Login</span>
+                <span id="loginSpinner" class="spinner-border spinner-border-sm d-none" role="status"></span>
+            </button>
+
+            <div id="loginMessage" class="message-box"></div>
+        </form>
+
+
+        <div class="login-footer">
+            <p>New to Krishi-Mitr? <a href="register.html">Create an account</a></p>
+            <div class="social-login">
+                <p>Or login with:</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-google"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <style>
+            .password-input-container {
+                position: relative;
+            }
+            .toggle-password {
+                position: absolute;
+                right: 10px;
+                top: 50%;
+                transform: translateY(-50%);
+                cursor: pointer;
+                color: #666;
+            }
+            .spinner-border {
+                vertical-align: middle;
+                margin-left: 5px;
+            }
+        </style>
+
+        <script>
+            function togglePasswordVisibility() {
+                const passwordInput = document.getElementById('password');
+                const icon = document.querySelector('.toggle-password');
+                if (passwordInput.type === 'password') {
+                    passwordInput.type = 'text';
+                    icon.classList.replace('fa-eye', 'fa-eye-slash');
+                } else {
+                    passwordInput.type = 'password';
+                    icon.classList.replace('fa-eye-slash', 'fa-eye');
+                }
+            }
+
+            document.getElementById('loginForm').addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                const loginButton = document.getElementById('loginButton');
+                const loginText = document.getElementById('loginText');
+                const loginSpinner = document.getElementById('loginSpinner');
+                const messageBox = document.getElementById('loginMessage');
+                
+                // Show loading state
+                loginButton.disabled = true;
+                loginText.textContent = 'Logging in...';
+                loginSpinner.classList.remove('d-none');
+                messageBox.textContent = '';
+                
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+                
+                try {
+                    const response = await fetch('http://localhost:5000/api/auth/login', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ username, password })
+                    });
+                    
+                    const data = await response.json();
+                    
+                    if (response.ok) {
+                        messageBox.textContent = 'Login successful! Redirecting...';
+                        messageBox.style.color = 'green';
+                        localStorage.setItem('currentUser', data.username);
+                        setTimeout(() => {
+                            window.location.href = 'dashboard.html';
+                        }, 1000);
+                    } else {
+                        messageBox.textContent = data.message || 'Login failed. Please check your credentials.';
+                        messageBox.style.color = 'red';
+                    }
+                } catch (error) {
+                    messageBox.textContent = 'Network error - please try again';
+                    messageBox.style.color = 'red';
+                    console.error('Login error:', error);
+                } finally {
+                    // Reset button state
+                    loginButton.disabled = false;
+                    loginText.innerHTML = '<i class="fas fa-sign-in-alt"></i> Login';
+                    loginSpinner.classList.add('d-none');
+                }
+            });
+
+        // Highlight current page in navbar
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = location.pathname.split('/').pop();
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPage) {
+                    link.classList.add('active');
+                    link.setAttribute('aria-current', 'page');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

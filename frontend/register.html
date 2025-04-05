@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:,">
+    <title>Register | Krishi-Mitr</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .hero-image {
+            background-image: url('https://images.unsplash.com/photo-1551290464-66719418ca54?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            padding: 2rem;
+        }
+        .registration-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        @media (max-width: 768px) {
+            .registration-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body class="farmer-theme register-page">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success shadow-sm">
+        <div class="container">
+            <!-- Brand Logo -->
+            <a class="navbar-brand" href="index.html">
+                <img src="assets/logo.jpg" alt="Krishi-Mitr" height="40" class="d-inline-block align-top me-2">
+                <span class="d-none d-md-inline">Krishi-Mitr</span>
+            </a>
+            
+            <!-- Toggler for Mobile View -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <!-- Navbar Links -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="marketplace.html">Marketplace</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pricing.html">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="barter.html">Barter</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+                
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">
+                            <i class="fas fa-sign-in-alt"></i> Login
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="register.html">
+                            <i class="fas fa-user-plus"></i> Register
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container-fluid px-0">
+        <div class="hero-image" style="background-image: url('assets/farm-hero.jpg')">
+        <div class="hero-content">
+            <h1>Join Krishi-Mitr Community</h1>
+            <p>Connect with farmers and agricultural experts</p>
+        </div>
+    </div>
+
+    <div class="registration-container">
+        <div class="registration-form">
+            <h2>Create Your Account</h2>
+            <form id="registerForm">
+                <div id="registerMessage" class="message-box"></div>
+                <div class="form-group">
+                    <label for="fullName"><i class="fas fa-user"></i> Full Name</label>
+                    <input type="text" id="fullName" placeholder="Enter your full name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email"><i class="fas fa-envelope"></i> Email</label>
+                    <input type="email" id="email" placeholder="Enter your email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="username"><i class="fas fa-user-tag"></i> Username</label>
+                    <input type="text" id="username" placeholder="Choose a username" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password"><i class="fas fa-lock"></i> Password</label>
+                    <input type="password" id="password" placeholder="Create a password" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword"><i class="fas fa-lock"></i> Confirm Password</label>
+                    <input type="password" id="confirmPassword" placeholder="Confirm your password" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="userType"><i class="fas fa-user-tie"></i> I am a:</label>
+                    <select id="userType" required>
+                        <option value="">Select user type</option>
+                        <option value="farmer">Farmer</option>
+                        <option value="buyer">Buyer</option>
+                        <option value="expert">Agricultural Expert</option>
+                    </select>
+                </div>
+
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="terms" required>
+                    <label for="terms">I agree to the Terms of Service and Privacy Policy</label>
+                </div>
+
+                <button type="submit" class="btn-register">
+                    <i class="fas fa-user-plus"></i> Register
+                </button>
+
+                <script>
+                    document.getElementById('registerForm').addEventListener('submit', async (e) => {
+                        e.preventDefault();
+                        
+                        const username = document.getElementById('username').value;
+                        const password = document.getElementById('password').value;
+                        const confirmPassword = document.getElementById('confirmPassword').value;
+                        const messageBox = document.getElementById('registerMessage');
+                        
+                        // Client-side validation
+                        if (password !== confirmPassword) {
+                            messageBox.textContent = 'Passwords do not match';
+                            messageBox.style.color = 'red';
+                            return;
+                        }
+                        
+                        try {
+                            const response = await fetch('http://localhost:5000/api/auth/register', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({ username, password })
+                            });
+                            
+                            const data = await response.json();
+                            
+                            if (response.ok) {
+                                messageBox.textContent = 'Registration successful! Redirecting to login...';
+                                messageBox.style.color = 'green';
+                                setTimeout(() => {
+                                    window.location.href = 'login.html';
+                                }, 1500);
+                            } else {
+                                messageBox.textContent = data.message || 'Registration failed';
+                                messageBox.style.color = 'red';
+                            }
+                        } catch (error) {
+                            messageBox.textContent = 'Network error - please try again';
+                            messageBox.style.color = 'red';
+                            console.error('Registration error:', error);
+                        }
+                    });
+                </script>
+
+                <div class="login-link">
+                    <p>Already have an account? <a href="login.html">Login here</a></p>
+                </div>
+            </form>
+        </div>
+
+        <div class="registration-benefits">
+            <h3>Why Join Krishi-Mitr?</h3>
+            <ul>
+                <li><i class="fas fa-check-circle"></i> Connect with farmers and buyers</li>
+                <li><i class="fas fa-check-circle"></i> Get expert agricultural advice</li>
+                <li><i class="fas fa-check-circle"></i> Buy and sell crops easily</li>
+                <li><i class="fas fa-check-circle"></i> Access market prices and trends</li>
+                <li><i class="fas fa-check-circle"></i> Join a growing community</li>
+            </ul>
+            
+            <div class="testimonial">
+            <img src="https://images.unsplash.com/photo-1586773860418-d37222d8fbe3?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&h=100&q=80" alt="Farmer" class="testimonial-img">
+                <p>"Krishi-Mitr helped me connect with buyers directly and get better prices for my crops."</p>
+                <p class="testimonial-author">- Rajesh Kumar, Farmer</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts/auth.js"></script>
+    <script>
+        // Highlight current page in navbar
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = location.pathname.split('/').pop();
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPage) {
+                    link.classList.add('active');
+                    link.setAttribute('aria-current', 'page');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
